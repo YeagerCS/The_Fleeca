@@ -402,6 +402,7 @@
 {"from":"1000002","target":"1000003","amount":-15,"total":1716,"date":{"$$date":1700463831340},"_id":"D4KtCwopEOzDjFNM"}
 {"from":"1000003","target":"1000001","amount":133,"total":1804,"date":{"$$date":1690754631340},"_id":"D5bVvPEmZkLs9jMg"}
 {"from":"1000003","target":"1000002","amount":63,"total":750,"date":{"$$date":1687687431340},"_id":"D74gCWYumb3BWuYP"}
+{"from":"1000006","target":"1000005","amount":20,"total":991,"date":{"$$date":1701791237836},"_id":"D86UiGO1IQrn1DjG"}
 {"from":"1000002","target":"1000001","amount":-125,"total":1555,"date":{"$$date":1698476631340},"_id":"DHi7E4U0IXeSWohM"}
 {"from":"1000003","target":"1000001","amount":55,"total":1584,"date":{"$$date":1690560231340},"_id":"DLu7LzJZTeDS8i3h"}
 {"from":"1000003","target":"1000002","amount":91,"total":2162,"date":{"$$date":1699340631340},"_id":"DQWn2oT3H6ZB4Kwc"}
@@ -457,6 +458,7 @@
 {"from":"1000002","target":"1000001","amount":-50,"total":50,"date":{"$$date":1685851431340},"_id":"F4kwk9LFdkpZQyg2"}
 {"from":"1000002","target":"1000003","amount":-36,"total":1429,"date":{"$$date":1694761431340},"_id":"F8uRodRqjpU3urzw"}
 {"from":"1000001","target":"1000002","amount":0.01,"total":2161.3600000000033,"date":{"$$date":1701773759159},"_id":"FCojAxvD15ubBXCQ"}
+{"from":"1000006","target":"1000005","amount":100,"total":1091,"date":{"$$date":1701791320139},"_id":"FCxzrPx16KFCbiG3"}
 {"from":"1000003","target":"1000002","amount":-84,"total":515,"date":{"$$date":1693973031340},"_id":"FDC2M1AItENGpEnF"}
 {"from":"1000003","target":"1000002","amount":8,"total":1682,"date":{"$$date":1692968631340},"_id":"FDFvx2ZQAe2DSyoc"}
 {"from":"1000002","target":"1000001","amount":57,"total":1180,"date":{"$$date":1684955031340},"_id":"FEtAdRqQiDHH24se"}
@@ -738,6 +740,7 @@
 {"from":"1000001","target":"1000002","amount":23,"total":1362,"date":{"$$date":1688259831340},"_id":"Nva6RZy3Ac8dSs1O"}
 {"from":"1000002","target":"1000001","amount":93,"total":1448,"date":{"$$date":1688465031340},"_id":"NwZj2zWOCI0DLyfI"}
 {"from":"1000001","target":"1000002","amount":-0.02,"total":349.6500000000001,"date":{"$$date":1701773723206},"_id":"O10PYdH9N7mHjGOv"}
+{"from":"1000005","target":"1000006","amount":12,"total":892,"date":{"$$date":1701810893971},"_id":"O16v54rBHc0hLyMv"}
 {"from":"1000001","target":"1000002","amount":-114,"total":1727,"date":{"$$date":1686899031340},"_id":"O3hgpVYJko0CqXNC"}
 {"from":"1000003","target":"1000001","amount":7,"total":1182,"date":{"$$date":1692644631340},"_id":"O3vpabN0jbRKNo0Z"}
 {"from":"1000002","target":"1000001","amount":127,"total":1568,"date":{"$$date":1688022231340},"_id":"O51KYy9xm9vtIkzH"}
@@ -1131,6 +1134,7 @@
 {"from":"1000002","target":"1000001","amount":27,"total":1918,"date":{"$$date":1689663831340},"_id":"b34hjwnWonAE9Ca9"}
 {"from":"1000002","target":"1000001","amount":131,"total":531,"date":{"$$date":1699837431340},"_id":"b5S929GtQcEEq0uI"}
 {"from":"1000001","target":"1000002","amount":-51,"total":962,"date":{"$$date":1695582231340},"_id":"b8LsvnViJiejFDwx"}
+{"from":"00000000","target":"1000007","amount":1000,"date":{"$$date":1701810779723},"_id":"bC8w11eyTkQD6BRS"}
 {"from":"1000003","target":"1000002","amount":65,"total":182,"date":{"$$date":1686456231340},"_id":"bEK3qIrGvmJokzEv"}
 {"from":"1000001","target":"1000002","amount":79,"total":1563,"date":{"$$date":1698584631340},"_id":"bH4xncp8m0LvcQ5B"}
 {"from":"1000002","target":"1000001","amount":134,"total":1230,"date":{"$$date":1695193431340},"_id":"bJ7XW0Y5pLDvlaOZ"}
@@ -1577,6 +1581,7 @@
 {"from":"1000002","target":"1000001","amount":118,"total":1175,"date":{"$$date":1692601431340},"_id":"pBaoHe7vX6LyPkh9"}
 {"from":"1000002","target":"1000003","amount":17,"total":928,"date":{"$$date":1700539431340},"_id":"pHIN5isjWbNgkVIC"}
 {"from":"1000001","target":"1000002","amount":114,"total":843,"date":{"$$date":1695679431340},"_id":"pHsDdOikLOgTE7Bq"}
+{"from":"1000005","target":"1000006","amount":-12,"total":1079,"date":{"$$date":1701810893969},"_id":"pHvRgpnO49fnPJeT"}
 {"from":"1000002","target":"1000001","amount":-126,"total":1782,"date":{"$$date":1696305831340},"_id":"pI7oblAHxm9s4H9T"}
 {"from":"1000001","target":"1000002","amount":63,"total":1437,"date":{"$$date":1696057431340},"_id":"pIdxRxreFm1w6eEs"}
 {"from":"1000002","target":"1000003","amount":121,"total":1121,"date":{"$$date":1700420631340},"_id":"pJbbqh6ws6zh7ztG"}
@@ -1684,8 +1689,10 @@
 {"from":"1000001","target":"1000002","amount":-130,"total":764,"date":{"$$date":1694145831340},"_id":"sqxjBfgyKqzD8v5A"}
 {"from":"1000002","target":"1000003","amount":-11,"total":1011,"date":{"$$date":1690193031340},"_id":"ss5aVj6kAGpMPaKd"}
 {"from":"1000002","target":"1000003","amount":41,"total":85,"date":{"$$date":1691046231340},"_id":"svXp0ziOXCiljqkb"}
+{"from":"1000005","target":"1000006","amount":-1,"total":1078,"date":{"$$date":1701810922917},"_id":"svXuW4OEToOuYWyu"}
 {"from":"1000001","target":"1000002","amount":-79,"total":139,"date":{"$$date":1698584631340},"_id":"t0ka6W3mk8b32HXS"}
 {"from":"1000003","target":"1000002","amount":146,"total":472,"date":{"$$date":1686737031340},"_id":"t1kuPALHqwTehsms"}
+{"from":"1000006","target":"1000005","amount":-20,"total":980,"date":{"$$date":1701791237835},"_id":"t9ggVccWAU8qrWf6"}
 {"from":"1000003","target":"1000001","amount":29,"total":339,"date":{"$$date":1699027431340},"_id":"tE3ATuPRk9GJkjUx"}
 {"from":"1000001","target":"1000002","amount":-23,"total":1449,"date":{"$$date":1688259831340},"_id":"tFu7jLuer2AvBM4n"}
 {"from":"1000002","target":"1000001","amount":-77,"total":1537,"date":{"$$date":1692104631340},"_id":"tTt2hJZza6RH0Zcr"}
@@ -1711,6 +1718,7 @@
 {"from":"1000002","target":"1000001","amount":135,"total":1248,"date":{"$$date":1695009831340},"_id":"tslay9BogPG9bsoF"}
 {"from":"1000002","target":"1000003","amount":-66,"total":1848,"date":{"$$date":1699005831340},"_id":"tv5l8oe72Mg9nWeb"}
 {"from":"1000002","target":"1000003","amount":-126,"total":1337,"date":{"$$date":1693929831340},"_id":"tzWk2YhX7HzcIgSk"}
+{"from":"1000006","target":"1000005","amount":-100,"total":880,"date":{"$$date":1701791320138},"_id":"u1e8SOyCprLE6M29"}
 {"from":"1000002","target":"1000001","amount":101,"total":1026,"date":{"$$date":1693746231340},"_id":"u31r74To560wWQsH"}
 {"from":"1000001","target":"1000002","amount":0.07,"total":2161.330000000003,"date":{"$$date":1701773698133},"_id":"u38dl8QlJNwRL5TD"}
 {"from":"1000001","target":"1000002","amount":49,"total":1445,"date":{"$$date":1692515031340},"_id":"u6AaeSvdcJSOqcag"}
@@ -1876,7 +1884,5 @@
 {"from":"1000002","target":"1000001","amount":-69,"total":1277,"date":{"$$date":1688648631340},"_id":"zxBYwimYpXKpcqy3"}
 {"from":"1000001","target":"1000002","amount":149,"total":343,"date":{"$$date":1685646231340},"_id":"zxfU6ZN94khdWZD8"}
 {"from":"1000001","target":"1000002","amount":-78,"total":835,"date":{"$$date":1694243031340},"_id":"zzvbOxH5jW1yrkmw"}
-{"from":"1000006","target":"1000005","amount":-20,"total":980,"date":{"$$date":1701791237835},"_id":"t9ggVccWAU8qrWf6"}
-{"from":"1000006","target":"1000005","amount":20,"total":991,"date":{"$$date":1701791237836},"_id":"D86UiGO1IQrn1DjG"}
-{"from":"1000006","target":"1000005","amount":-100,"total":880,"date":{"$$date":1701791320138},"_id":"u1e8SOyCprLE6M29"}
-{"from":"1000006","target":"1000005","amount":100,"total":1091,"date":{"$$date":1701791320139},"_id":"FCxzrPx16KFCbiG3"}
+{"from":"1000005","target":"1000007","amount":-3250,"total":2428,"date":{"$$date":1701811282812},"_id":"4g4fVaeqZjTaoEdn"}
+{"from":"1000005","target":"1000007","amount":3250,"total":4250,"date":{"$$date":1701811282813},"_id":"rfUkErJF1xeKL3GJ"}

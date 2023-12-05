@@ -87,8 +87,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: $color-palette-1;
     border: none;
     border-radius: 1em;
-    width: 250px;   
-    font-family: "Burbank big";
+    width: 300px;   
+    height: min-content;
+    font-family: "Burbank big", "Berlin sans FB", Arial;
     transition: .4s;
     font-size: 30px;
 }

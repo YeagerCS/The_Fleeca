@@ -45,6 +45,6 @@ export class LoginComponent {
   // Header
   headerText: string = "Register"
   navToRegister(){
-    this.router.navigate(["/register"])
+    this.router.navigate(["register"])
   }
 }

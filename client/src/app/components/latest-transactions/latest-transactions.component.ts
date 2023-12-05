@@ -25,7 +25,7 @@ export class LatestTransactionsComponent implements OnInit, AfterViewInit{
   currency: (value: number) => string = currency;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort
+  @ViewChild('tbSort') tbSort = new MatSort() 
 
   
 
@@ -43,26 +43,46 @@ export class LatestTransactionsComponent implements OnInit, AfterViewInit{
       this.transactionQuery = tQuery;
       this.dataSource = new MatTableDataSource<TransactionConfirmation>(tQuery.result);
       this.dataSource.paginator = this.paginator;
-
-
     })  
-    // TODO: Sorting doesn't work.
-    this.sort.sortChange.subscribe((sortEvent: Sort) => {
-      if (sortEvent.active === 'Balance') {
-        this.dataSource.data = this.dataSource.data.sort((a, b) => {
-          if (sortEvent.direction === 'asc') {
-            return a.total - b.total;
-          } else {
-            return b.total - a.total;
-          }
-        });
-      }
-    });
-
   }
 
-  ngAfterViewInit(): void {
+  applySort(event: Sort): void {
+    const data = this.dataSource.data.slice(); //copy array
 
+    if (event.active && event.direction) {
+      this.dataSource.data = this.sortData(data, event.active, event.direction);
+    }
+  }
+
+  private sortData(data: TransactionConfirmation[], column: string, direction: string): TransactionConfirmation[] {
+    return data.sort((a, b) => {
+      const valueA = this.getSortingValue(a, column);
+      const valueB = this.getSortingValue(b, column);
+
+      if (typeof valueA === 'number' && typeof valueB === 'number') {
+        return (valueA - valueB) * (direction === 'asc' ? 1 : -1);
+      } else {
+        return valueA.localeCompare(valueB) * (direction === 'asc' ? 1 : -1);
+      }
+    });
+  }
+
+  private getSortingValue(item: TransactionConfirmation, column: string): any {
+    switch (column) {
+      case 'Source':
+        return item.from;
+      case 'Target':
+        return item.target;
+      case 'Amount':
+        return item.amount;
+      case 'Balance':
+        return item.total;
+      default:
+        return (item as any)[column];
+    }
+  }
+
+  ngAfterViewInit() {    
   }
 
 }

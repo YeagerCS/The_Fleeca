@@ -1,11 +1,10 @@
-{"ownerId":"vIPsYfkWp3tV1TTS","accountNr":"1000005","amount":971,"_id":"2F16xqQxof1ufc1A"}
-{"ownerId":"qC4VQEunt4EbtxIJ","accountNr":"1000006","amount":1000,"_id":"FH17thwLh8VTnZi7"}
+{"ownerId":"vIPsYfkWp3tV1TTS","accountNr":"1000005","amount":5678,"_id":"2F16xqQxof1ufc1A"}
+{"ownerId":"qC4VQEunt4EbtxIJ","accountNr":"1000006","amount":893,"_id":"FH17thwLh8VTnZi7"}
 {"ownerId":"Z9NscuzM9AZa882i","accountNr":"1000001","amount":378.3500000000002,"_id":"HoT1imqSriXphjXI"}
 {"ownerId":"j8lunTaaJ7KVYpJG","accountNr":"1000004","amount":1000,"_id":"KAf8kGgZvsAYNkPX"}
 {"ownerId":"W1X6r84vEqtaV9N9","accountNr":"1000002","amount":2161.650000000004,"_id":"XmZa3rZJWLmbFVFP"}
+{"ownerId":"Tdpxct3kWfdOakBu","accountNr":"1000007","amount":1000,"_id":"qDR7gzqHj1eofFes"}
 {"ownerId":"LVOJSEGgAzdzuaPk","accountNr":"1000003","amount":489,"_id":"wJHGOR6j9DntgO19"}
 {"$$indexCreated":{"fieldName":"accountNr","unique":true,"sparse":true}}
-{"ownerId":"qC4VQEunt4EbtxIJ","accountNr":"1000006","amount":980,"_id":"FH17thwLh8VTnZi7"}
-{"ownerId":"vIPsYfkWp3tV1TTS","accountNr":"1000005","amount":991,"_id":"2F16xqQxof1ufc1A"}
-{"ownerId":"qC4VQEunt4EbtxIJ","accountNr":"1000006","amount":880,"_id":"FH17thwLh8VTnZi7"}
-{"ownerId":"vIPsYfkWp3tV1TTS","accountNr":"1000005","amount":1091,"_id":"2F16xqQxof1ufc1A"}
+{"ownerId":"vIPsYfkWp3tV1TTS","accountNr":"1000005","amount":2428,"_id":"2F16xqQxof1ufc1A"}
+{"ownerId":"Tdpxct3kWfdOakBu","accountNr":"1000007","amount":4250,"_id":"qDR7gzqHj1eofFes"}
