@@ -1,0 +1,99 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$bwz-rappi-primary: mat.define-palette(mat.$indigo-palette);
+$bwz-rappi-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$bwz-rappi-warn: mat.define-palette(mat.$red-palette);
+$color-palette-1: #268F3A;
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$bwz-rappi-theme: mat.define-light-theme((
+  color: (
+    primary: $bwz-rappi-primary,
+    accent: $bwz-rappi-accent,
+    warn: $bwz-rappi-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($bwz-rappi-theme);
+
+/* You can add global styles to this file, and also import other style files */
+.the-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-size: 30px;
+}
+
+h1{
+    font-size: 50px;
+}
+
+.the-form input{
+    font-size: 25px;
+}
+
+.the-form button{
+    height: 35px;
+    width: 100%;
+    font-size: 30px;
+}
+.the-form div{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-wrapper{
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 25px;
+    box-shadow: -1px 2px 14px 2px #268F3A; 
+}
+
+body{
+    margin: 0;
+    background-color: black;
+    color: white;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.form-eater{
+    font-size: 28px;
+    background-color: black;
+    color: #3dda5a;
+    border: 1px solid white;
+    border-radius: 10px;    
+    padding: 5px;
+}
+
+.the-button{
+    background-color: $color-palette-1;
+    border: none;
+    border-radius: 1em;
+    width: 250px;   
+    font-family: "Burbank big";
+    transition: .4s;
+    font-size: 30px;
+}
+
+.the-button:hover{
+    background-color: #2ff253;
+    cursor: pointer;
+}

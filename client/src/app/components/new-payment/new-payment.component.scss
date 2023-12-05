@@ -1,0 +1,31 @@
+.payment-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 22px;
+    gap: 10px;
+}
+
+.payment-form button{
+    height: 40px;
+    width: 120px;
+}
+.payment-form div{
+    display: flex;
+    flex-direction: column;
+}
+.form-parent{
+    width: 550px;
+    padding: 25px;
+    box-shadow: -1px 2px 14px 2px #268F3A; 
+}
+#pay-btn{
+    font-size: 28px;
+}
+.success-form p{
+    font-size: 20px;
+}
+
+#errormsg{
+    font-size: 20px;
+}

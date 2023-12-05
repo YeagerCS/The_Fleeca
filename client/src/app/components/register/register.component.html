@@ -1,0 +1,30 @@
+<app-header [func]="navToLogin" [headerText]="headerText"></app-header>
+<div class="form-wrapper">
+    <div><h1>Welcome to Fleeca</h1></div>
+    <form class="the-form" #loginForm="ngForm" (submit)="onSubmit(loginForm)">
+        <div>
+            <label for="username">Username: </label>
+            <input type="text" name="username" required="true" [(ngModel)]="username" minlength="3" class="form-eater">
+        </div>
+        <div>
+            <label for="firstname">First name: </label>
+            <input type="text" name="firstname" required="true" [(ngModel)]="firstname" minlength="3" class="form-eater">
+        </div>
+        <div>
+            <label for="lastname">Last name: </label>
+            <input type="text" name="lastname" required="true" [(ngModel)]="lastname" minlength="3" class="form-eater">
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" name="password" required="true" [(ngModel)]="password" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$" class="form-eater">
+        </div>
+        <div>
+            <label for="confirmPass">Confirm Password: </label>
+            <input type="password" name="confirmPass" required="true" [(ngModel)]="confirmpass" class="form-eater">
+        </div>
+        <div>
+            <button class="the-button">Login</button>
+        </div>
+    </form>
+    <span *ngIf="error"><h2>{{ error }}</h2></span>
+</div>

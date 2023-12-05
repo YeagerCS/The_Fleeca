@@ -1,0 +1,34 @@
+<div class="form-parent">
+    <h1>New Payment</h1>
+    <div *ngIf="!transactionCompleted; else transactionCompleteTemplate">
+        <form class="payment-form" #paymentForm="ngForm" (submit)="transferAmount(paymentForm)">
+            <div>
+                <label for="from">From:</label>
+                <input type="text" name="from" disabled [(ngModel)]="fromString" class="form-eater">
+            </div>
+            <div>
+                <label for="to">To:</label>
+                <input type="text" name="to" [(ngModel)]="targetInput" class="form-eater" (keyup)="onKeyUp()" appNumericInput required inputmode="numeric">
+                <small>{{ targetMessage }}</small>
+            </div>
+            <div>
+                <label for="amount">Amount [CHF]:</label>
+                <input type="text" name="amount" [(ngModel)]="amountString" class="form-eater" required inputmode="numeric" appNumericInput>
+                <small>Please specify the amount</small>
+            </div>
+            <div>
+                <button type="submit" class="the-button" id="pay-btn">Pay</button>
+            </div>
+        </form>
+    </div>
+    <ng-template  #transactionCompleteTemplate>
+        <form class="success-form">
+            <p>Transaction to <strong>{{ targetInput }}</strong> succeeded!</p>
+            <p>New balance <strong>{{ currency(currentBalance) }}</strong></p>
+            <button (click)="startOver()" class="the-button">Start Over</button>
+        </form>
+    </ng-template>
+    <div>
+        <p id="errormsg">{{ error }}</p>
+    </div>
+</div>

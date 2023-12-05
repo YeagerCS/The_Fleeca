@@ -1,0 +1,28 @@
+header div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header div button{
+    height: 50px;
+}
+
+header{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+header div{
+    margin: 0;
+    padding: 0;
+}
+
+#logo{
+    margin: 30px;
+}
+
+#logo img{
+    width: 350px;
+}
