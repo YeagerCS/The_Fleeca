@@ -6,6 +6,7 @@ import { AccountBalance } from 'src/app/services/account.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { Transaction, TransactionConfirmation } from 'src/app/services/transaction.service';
 
+
 @Component({
   selector: 'app-budgetplan',
   templateUrl: './budgetplan.component.html',
@@ -16,7 +17,10 @@ export class BudgetplanComponent implements OnInit{
 
   chartData!: any[]
   @Input() currentUser!: AccountBalance
+
   selectedYear: number = new Date().getFullYear();
+  incomeData!: TransactionConfirmation[]
+  expenseData!: TransactionConfirmation[]
 
   showXAxis: boolean = true;
   showYAxis: boolean = true;
@@ -35,7 +39,7 @@ export class BudgetplanComponent implements OnInit{
   };
 
   onSelectionChanged(){
-    this.loadData();
+    this.updateData()
   }
 
 
@@ -44,55 +48,58 @@ export class BudgetplanComponent implements OnInit{
     this.jwt = this.lsService.load();
     this.accountHandler.updateTransactions(this.jwt)
     
-    this.loadData();
+    this.initialLoad();
   }
 
-  loadData(): void{
-    console.log(this.selectedYear + " it's here!!");
+  initialLoad(): void{
     
-   const selectedYear = this.selectedYear;
-
-    const incomingQuery$ = this.accountHandler.transactionQuery.pipe(
-      map(tq => tq.result.filter(
-        transaction => transaction.from !== this.currentUser.accountNr &&
-        new Date(transaction?.date)?.getFullYear() === selectedYear
-      ))
-    );
-
-    const outgoingQuery$ = this.accountHandler.transactionQuery.pipe(
-      map(tq => tq.result.filter(
-        transaction => transaction.from === this.currentUser.accountNr &&
-        new Date(transaction?.date)?.getFullYear() === selectedYear
-      ))
-    );
-
-    combineLatest([incomingQuery$, outgoingQuery$]).subscribe(([incomingData, outgoingData]) => {
-      console.log("Inside of subscription");
-      this.processData(incomingData, outgoingData);
+    combineLatest([
+      this.accountHandler.transactionQuery.pipe(
+        map(tq => tq.result.filter(transaction => transaction.from !== this.currentUser.accountNr))
+      ),
+      this.accountHandler.transactionQuery.pipe(
+        map(tq => tq.result.filter(transaction => transaction.from === this.currentUser.accountNr))
+      )
+    ]).subscribe(([incomeData, expenseData]) => {
+      this.incomeData = incomeData;
+      this.expenseData = expenseData;
+      
+      this.updateData();
     });
+  }
+
+  updateData(){
+    const incomeData = this.incomeData.filter(transaction => new Date(transaction.date).getFullYear() == Number(this.selectedYear));
+    const expenseData = this.expenseData.filter(transaction => new Date(transaction.date).getFullYear() == Number(this.selectedYear));
+
+    this.processData(incomeData, expenseData)
   }
 
 
   processData(incoming: TransactionConfirmation[], outgoing: TransactionConfirmation[]){
     const months: string[] = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+    const monthStrings: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
     const groupedData = [];
 
-
+    let index = 0
     for(const month of months){
       
       const incomingTotal = this.calculateTotal(incoming, month);
       const outgoingTotal = this.calculateTotal(outgoing, month);
       
       groupedData.push({
-        name: month,
+        name: monthStrings[index],
         series: [
-          { name: "income", value: incomingTotal },
-          { name: "Expense", value: outgoingTotal * -1}
+          { name: "Income", value: incomingTotal },
+          { name: "Expense", value: Math.abs(outgoingTotal)}
         ]
       })
+
+      index++;
     }
     
-    this.chartData = [...groupedData];
+    this.chartData = [...groupedData] || [];
   }
 
   calculateTotal(transactions: TransactionConfirmation[], month: string){

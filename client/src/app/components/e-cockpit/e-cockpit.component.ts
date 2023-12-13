@@ -48,5 +48,9 @@ export class ECockpitComponent implements OnInit{
 
   onTabChanged(event: any){
     this.isBudgetPlan = event.index === 3;
+
+    if(this.isBudgetPlan){
+      this.accountHandler.updateTransactions(this.jwt);
+    }
   }
 }
