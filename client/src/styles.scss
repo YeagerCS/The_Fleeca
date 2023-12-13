@@ -49,6 +49,7 @@ h1{
     font-size: 25px;
 }
 
+
 .the-form button{
     height: 35px;
     width: 100%;
@@ -60,10 +61,9 @@ h1{
 }
 
 .form-wrapper{
-    max-width: 650px;
-    margin: 0 auto;
+    width: 650px;
     padding: 25px;
-    box-shadow: -1px 2px 14px 2px #268F3A; 
+    box-shadow: -1px 2px 14px 2px #268F3A;
 }
 
 body{
@@ -71,7 +71,7 @@ body{
     background-color: black;
     color: white;
 }
-html, body { height: 100%; }
+body { height: 100vh; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .form-eater{
@@ -81,6 +81,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border: 1px solid white;
     border-radius: 10px;    
     padding: 5px;
+}
+
+.div-form-wrapper{
+    display: flex;
+    justify-content: center;
 }
 
 .the-button{
@@ -97,4 +102,35 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .the-button:hover{
     background-color: #2ff253;
     cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .form-wrapper {
+      width: 100%; // Adjust the width as needed
+      margin: 0 auto; // Center the form horizontally
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+
+   
+      
+      
+}
+.mat-mdc-tab .mdc-tab__text-label{
+    color: black !important;
+    
+}
+
+.mat-mdc-tab-group, .mat-mdc-tab-nav-bar{
+    --mdc-tab-indicator-active-indicator-color: #268F3A;
+    --mat-tab-header-active-label-text-color: #3dda5a !important;
+    --mat-tab-header-active-ripple-color: #268F3A;
+    --mat-tab-header-active-focus-label-text-color: #268F3A;
+    --mat-tab-header-active-hover-label-text-color: #268F3A;
+    --mat-tab-header-active-focus-indicator-color: #268F3A;
+    --mat-tab-header-active-hover-indicator-color: #268F3A;
 }

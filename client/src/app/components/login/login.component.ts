@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService, Credential, LoginInfo } from 'src/app/services/auth.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { LocalstorageService } from 'src/app/services/localstorage.service';
 })
 export class LoginComponent {
   constructor(public authService: AuthService, public lsService: LocalstorageService,
-    private router: Router){
+    private router: Router, private navService: NavigationService){
     this.error = ""
   }
 
@@ -29,7 +30,7 @@ export class LoginComponent {
           this.credential = cred; 
           this.lsService.save(cred.token);
           this.error = "";
-          this.router.navigate(["/dashboard"])
+          this.navService.getDashboard();
         },
         error: e => {
           console.log('An error occurred:', e);
@@ -45,6 +46,6 @@ export class LoginComponent {
   // Header
   headerText: string = "Register"
   navToRegister(){
-    this.router.navigate(["register"])
+    this.navService.getRegister();
   }
 }

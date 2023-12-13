@@ -7,6 +7,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator'
 import { DataSourceSharingService } from 'src/app/services/data-source-sharing.service';
 import { currency } from 'src/app/currency-formatter';
+import { format } from 'src/app/date-formatter';
 
 @Component({
   selector: 'app-latest-transactions',
@@ -18,11 +19,13 @@ export class LatestTransactionsComponent implements OnInit, AfterViewInit{
     private dataSourceSerivce: DataSourceSharingService){
   }
 
+  @Input() cockpit: boolean = false;
   transactionQuery!: TransactionQuery
   jwt!: string
-  displayedColumns: string[] = ['Source', 'Target', 'Amount', 'Balance']
+  displayedColumns: string[] = ['Source', 'Target', 'Amount', 'Balance', 'Date']
   dataSource!: MatTableDataSource<TransactionConfirmation>;
   currency: (value: number) => string = currency;
+  format: (value: string) => string = format;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('tbSort') tbSort = new MatSort() 
@@ -77,6 +80,8 @@ export class LatestTransactionsComponent implements OnInit, AfterViewInit{
         return item.amount;
       case 'Balance':
         return item.total;
+      case 'Date':
+        return item.date;
       default:
         return (item as any)[column];
     }

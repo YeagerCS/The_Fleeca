@@ -1,25 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { DASHBOARD_ROUTE, ECOCKPIT_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from '../routes';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NavigationService {
+export class NavigationService {  
   constructor(private router: Router) { }
-  public loginRoute = 'login'
-  public registerRoute = 'register'
-  public dashboardRoute = 'dashboard'
-  // TODO: Isn't used.
   getLogin(){
-    this.router.navigate([this.loginRoute])
+    this.router.navigate([LOGIN_ROUTE])
   }
 
   getRegister() {
-    this.router.navigate([this.registerRoute])
+    this.router.navigate([REGISTER_ROUTE])
   }
 
   getDashboard() {
-    this.router.navigate([this.dashboardRoute])
+    this.router.navigate([DASHBOARD_ROUTE])
+  }
+
+  getEcockpit(){
+    this.router.navigate([ECOCKPIT_ROUTE])
   }
 
 }

@@ -1,0 +1,28 @@
+<section>
+    <div class="select-div">
+        <div class="centered">
+            <div>
+                <mat-label style="color: black">Choose year</mat-label>
+            </div>
+            <div class="custom-select">
+                <select [(ngModel)]="selectedYear" (change)="onSelectionChanged()">
+                    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="chart-div">
+        <ngx-charts-bar-vertical-2d
+        [customColors]="colorScheme"
+        [results]="chartData"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [gradient]="gradient"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        >
+        </ngx-charts-bar-vertical-2d>
+    </div>
+</section>

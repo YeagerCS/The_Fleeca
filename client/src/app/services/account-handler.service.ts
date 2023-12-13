@@ -36,10 +36,22 @@ export class AccountHandlerService {
   }
 
   updateTransactions(token: string): void{
-    this.transactionService.getTransactions(token, new Date("01/01/1669"), new Date(), 1000, undefined).subscribe({
+    this.transactionService.getTransactions(token).subscribe({
       next: tQuery => {
         this.transactions = tQuery;
         this.transactionsSubject.next(tQuery);
+      },
+      error: e => {
+        console.log(e);
+      }
+    })
+  }
+
+  updateTransactionsByDate(token: string, startDate: Date, endDate: Date): void{
+    this.transactionService.getTransactions(token, {fromDate: startDate, toDate: endDate}).subscribe({
+      next: tq => {
+        this.transactions = tq;
+        this.transactionsSubject.next(tq)
       },
       error: e => {
         console.log(e);

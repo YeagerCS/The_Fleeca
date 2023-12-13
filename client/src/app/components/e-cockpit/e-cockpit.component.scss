@@ -1,0 +1,16 @@
+mat-tab-group {
+    background-color: white; 
+}
+  
+.transactions{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.form-parent{
+    box-shadow: none !important;
+}

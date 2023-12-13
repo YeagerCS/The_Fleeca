@@ -10,7 +10,7 @@ import {config} from './config';
 import {dataSeed} from './util/dataSeed';
 
 import {accountRouter} from './routes/accountRouter';
-import {userRouter} from './routes/userRouter';
+import {userRouter, userRouterProtected} from './routes/userRouter';
 
 const app = express();
 
@@ -32,6 +32,7 @@ app.use(express.static(path.resolve('./public')));
 // register REST routes
 app.use('/auth', userRouter);
 app.use(jwt(config.jwt.validateOptions)); // after this middleware a token is required!
+app.use('/auth', userRouterProtected);
 app.use('/accounts', accountRouter);
 
 app.use(function(req, res, next) {

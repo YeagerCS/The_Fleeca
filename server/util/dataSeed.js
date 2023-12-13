@@ -7,9 +7,10 @@ const initialAccountData = [
     { accountNr: null, login: "user3", firstname: "Kevin", lastname: "Schmidt", password: "1234" }
 ];
 
+const categories = [ 'living', 'food', 'furniture', 'mobility', 'beauty_health', 'media', 'electronics' ];
 const startDate = +new Date(Date.now() - (190 /*d*/ * 24 /*h*/ * 60 /*min*/ * 60 /*s*/ * 1000));
 
-const randomTransactionAmount = 150; // $
+const maxRandomTransactionAmount = 150; // $
 const maxTransactions = 1500;
 
 function getRandomAccountId() {
@@ -19,6 +20,10 @@ function getRandomAccountId() {
     return initialAccountData[randomIdx].accountNr;
 }
 
+function getRandomCategory() {
+    return categories[Math.round(Math.random() * categories.length)];
+}
+
 async function createTransaction() {
     let currentTransaction = 0;
 
@@ -26,8 +31,9 @@ async function createTransaction() {
         await accountService.addTransaction(
             getRandomAccountId(),
             getRandomAccountId(),
-            Math.round(Math.random() * randomTransactionAmount),
-            new Date(startDate + (3600 * currentTransaction * 1000 * 3)));
+            Math.round(Math.random() * maxRandomTransactionAmount),
+            new Date(startDate + (3600 * currentTransaction * 1000 * 3)),
+            getRandomCategory());
 
         if (++currentTransaction < maxTransactions) {
             await createTransactionRecursive();

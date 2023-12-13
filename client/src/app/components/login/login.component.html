@@ -1,18 +1,20 @@
 <app-header [headerText]="headerText" [func]="navToRegister"></app-header>
-<div class="form-wrapper">
-    <div><h1>Welcome to Fleeca</h1></div>
-    <form class="the-form" #loginForm="ngForm" (submit)="onSubmit(loginForm)">
-        <div>
-            <label for="username">Username: </label>
-            <input type="text" name="username" required="true" [(ngModel)]="username" minlength="3" class="form-eater">
-        </div>
-        <div>
-            <label for="password">Password: </label>
-            <input type="text" name="password" required="true" [(ngModel)]="password" class="form-eater">
-        </div>
-        <div>
-            <button class="the-button">Login</button>
-        </div>
-    </form>
-    <span *ngIf="error"><h2>{{ error }}</h2></span>
+<div class="div-form-wrapper">
+    <div class="form-wrapper">
+        <div><h1>Welcome to Fleeca</h1></div>
+        <form class="the-form" #loginForm="ngForm" (submit)="onSubmit(loginForm)">
+            <div>
+                <label for="username">Username: </label>
+                <input type="text" name="username" required="true" [(ngModel)]="username" minlength="3" class="form-eater">
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <input type="password" name="password" required="true" [(ngModel)]="password" class="form-eater">
+            </div>
+            <div>
+                <button class="the-button">Login</button>
+            </div>
+        </form>
+        <span *ngIf="error"><h2>{{ error }}</h2></span>
+    </div>
 </div>

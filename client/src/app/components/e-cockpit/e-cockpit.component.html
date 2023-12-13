@@ -1,0 +1,16 @@
+<app-header [headerText]="headerText" [func]="navDashboard" [dateFilter]="!isBudgetPlan" [yearFilter]="isBudgetPlan"></app-header>
+<mat-tab-group (selectedTabChange)="onTabChanged($event)">
+    <mat-tab label="Transactions" class="transactions">
+        <app-latest-transactions [cockpit]="true"></app-latest-transactions>
+    </mat-tab>
+    <mat-tab label="Balance Development">
+        <app-balance-development *ngIf="currentUser" [currentUser]="currentUser"></app-balance-development>
+    </mat-tab>
+    <mat-tab label="Expenditure">
+        <app-expenditure></app-expenditure>
+    </mat-tab>
+    <mat-tab label="Budgetplan">
+        <app-budgetplan *ngIf="currentUser" [currentUser]="currentUser"></app-budgetplan>
+    </mat-tab>
+</mat-tab-group>
+

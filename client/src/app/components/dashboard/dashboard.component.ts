@@ -4,6 +4,7 @@ import { AccountHandlerService } from 'src/app/services/account-handler.service'
 import { Account, AccountBalance, AccountService } from 'src/app/services/account.service';
 import { AuthService, Credential } from 'src/app/services/auth.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,7 @@ import { LocalstorageService } from 'src/app/services/localstorage.service';
 })
 export class DashboardComponent implements OnInit{
   constructor(private router: Router, public lsService: LocalstorageService, public accountService: AccountService,
-    private authService: AuthService, private accountHandler: AccountHandlerService){
+    private authService: AuthService, private accountHandler: AccountHandlerService, private navService: NavigationService){
 
   }
 
@@ -41,6 +42,6 @@ export class DashboardComponent implements OnInit{
   }
   logOut(){ 
     this.lsService.delete();
-    this.router.navigate(["/login"])
+    this.navService.getLogin();
   }
 }

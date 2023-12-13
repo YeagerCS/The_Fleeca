@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, OnChanges, SimpleChanges} from "@angular/core"
-import { NgForm } from "@angular/forms";
+import { FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 import { finalize } from "rxjs";
 import { currency } from "src/app/currency-formatter";
 import { AccountHandlerService } from "src/app/services/account-handler.service";
@@ -8,62 +8,49 @@ import { DataSourceSharingService } from "src/app/services/data-source-sharing.s
 import { LocalstorageService } from "src/app/services/localstorage.service";
 import { TransactionService } from "src/app/services/transaction.service";
 
-const DEFAULT_MSG = "Please specify the target account number";
+const DEFAULT_MSG = "Please specify the target account number.";
+const DEFAULT_AMOUNT_MSG = "Please specify the amount."
 @Component({
   selector: 'app-new-payment',
   templateUrl: './new-payment.component.html',
   styleUrls: ['./new-payment.component.scss']
 })
 export class NewPaymentComponent implements OnInit{
+
   constructor(private transactionService: TransactionService, private lsService: LocalstorageService,
     private accountService: AccountService, private accountHandler: AccountHandlerService,
     private dataSourceService: DataSourceSharingService){
 
   }
 
-  fromString!: string;
-  targetInput!: string
-  amountString!: string
   amountInput!: number
   currency: (value: number) => string = currency;
   userBalance!: AccountBalance
+  fromString!: string
+  targetInput!: string
+  amountString!: string
+
   jwt!: string
   currentBalance!: number;
   transactionCompleted!: boolean
   targetMessage: string = DEFAULT_MSG;
+  targetAmountMessage:string = DEFAULT_AMOUNT_MSG;
   error!: string
 
   ngOnInit(): void {
     this.jwt = this.lsService.load();
     this.accountHandler.updateBalance(this.jwt);
-
+    
     this.accountHandler.userBalance.subscribe(accountBalance => {
       this.updateFromText(accountBalance);
       this.currentBalance = accountBalance.amount;
       this.userBalance = accountBalance;
     })
 
+   
   }
 
-
-  startOver(){
-    this.targetInput = ""
-    this.accountHandler.updateBalance(this.jwt);
-
-    this.amountInput = Number()
-    this.amountString = "";
-    this.transactionCompleted = false
-    this.accountHandler.userBalance.subscribe(accountBalance => {
-      this.updateFromText(accountBalance);
-      this.currentBalance = accountBalance.amount;
-    })
-  }
-
-  private updateFromText(accountBalance: AccountBalance){
-    this.fromString = accountBalance.accountNr + " [" + currency(accountBalance.amount) + "]";
-  }
-
-  onKeyUp(){
+  formValidator(){
     if(this.targetInput){
       this.accountService.getAccountInfo(this.jwt, this.targetInput).subscribe({
         next: info => {
@@ -79,30 +66,73 @@ export class NewPaymentComponent implements OnInit{
     }
   }
 
-  transferAmount(form: NgForm){
-    if(form.valid && this.targetInput !== this.userBalance.accountNr){
-      this.amountInput = Number(this.amountString)
 
-      this.transactionService.transfer(this.jwt, {target: this.targetInput, amount: this.amountInput}).subscribe({
-        next: confirmation => { 
-          this.transactionCompleted = true;
-          this.currentBalance = confirmation.total;
-          this.error = "";
+  startOver(){
+    this.targetInput = ""
+    this.accountHandler.updateBalance(this.jwt);
 
-          setTimeout(() => {
+    this.amountInput = Number()
+    this.amountString = ""
+    this.transactionCompleted = false
+    this.accountHandler.userBalance.subscribe(accountBalance => {
+      this.updateFromText(accountBalance);
+      this.currentBalance = accountBalance.amount;
+    })
+  }
+
+  private updateFromText(accountBalance: AccountBalance){
+    this.fromString = (accountBalance.accountNr + " [" + currency(accountBalance.amount) + "]");
+  }
+
+  onKeyUp(){
+    this.formValidator()
+  }
+
+  onKeyUpAmount(){
+    this.amountInput = Number(this.amountString)
+    this.targetAmountMessage = DEFAULT_AMOUNT_MSG;
+
+    if(this.amountInput >= this.userBalance.amount){
+      this.targetAmountMessage = "The inputted exceeds your balance.";
+    }
+
+    if(this.amountInput < 0.05){
+      this.targetAmountMessage = "You can't send less than 0.05 CHF."
+    }
+
+    if(!this.amountString){
+      this.targetAmountMessage = DEFAULT_AMOUNT_MSG;
+    }
+  }
+
+  transferAmount(ngForm: NgForm){
+    this.amountInput = Number(this.amountString)
+
+    if(this.targetInput !== this.userBalance.accountNr && ngForm.valid && this.amountInput){
+      if(this.amountInput <= this.userBalance.amount){
+        this.transactionService.transfer(this.jwt, {target: this.targetInput, amount: this.amountInput}).subscribe({
+          next: confirmation => { 
+            this.transactionCompleted = true;
+            this.currentBalance = confirmation.total;
+            this.error = "";
+  
             this.accountHandler.updateTransactions(this.jwt);
-          }, 900)
-          this.accountHandler.transactionQuery.subscribe(tq => {
-            this.dataSourceService.updateDataSource(tq.result);
-            console.log(tq);
-          });
-        },
-        error: e => {
-          this.error = "Couldn't find the specified user."
-        }
-      })
+            this.accountHandler.transactionQuery.subscribe(tq => {
+              this.dataSourceService.updateDataSource(tq.result);
+              console.log(tq);
+            });
+          },
+          error: e => {
+            this.error = "Couldn't find the specified user."
+          }
+        })
+      } else{
+        this.error = "The inputted amount exceed your balance."
+      }
     } else{
       this.error = "Please fill out the fields.";
     }
+    this.targetMessage = DEFAULT_MSG;
+    this.targetAmountMessage = DEFAULT_AMOUNT_MSG;
   }
 }

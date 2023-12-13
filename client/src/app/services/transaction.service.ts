@@ -7,12 +7,14 @@ import { getHeaders, getServerUrl } from './http-environment';
 
 export interface Transaction {
   target: string,
-  amount: number
+  amount: number,
+  category?: string,
 }
 export interface TransactionConfirmation {
   from: string,
   target: string,
   amount: number,
+  category?: string,
   total: number,
   date: string
 }
@@ -26,6 +28,28 @@ export interface TransactionQuery {
   },
   result: TransactionConfirmation[]
 }
+
+/**
+ * Spezifiziert eine Anfrage, welche die Anzahl der zurückzugebenen Transactions limitiert und
+ * zusätzlich einen Offset bestimmt.
+ * @prop {number} count Anzahl der Objekte in der Antwort.
+ * @prop {number} skip Anzahl der übersprungenen Objekte in der Db.
+ */
+export interface CountQuery {
+  count: number,
+  skip?: number,
+}
+/**
+ * Spezifiziert eine Anfrage, welche die Anzahl der zurückzugebenen Transactions aufgrund des
+ * angegebenen Datums limitiert.
+ * @prop {Date} fromDate Start des Zeitraums der gesuchten Transaktionen.
+ * @prop {Date} toDate Ende des Zeitraums der gesuchten Transaktionen.
+ */
+export interface DateQuery {
+  fromDate: Date,
+  toDate: Date
+}
+
 
 /**
  * Mit dem Transaction Service können Transaktionen durchgeführt werden sowie Abfragen
@@ -93,12 +117,16 @@ export class TransactionService {
    * }
    * ```
    */
-  public getTransactions(jwtToken: string, fromDate?: Date, toDate?: Date, count?: number, skip?: number): Observable<TransactionQuery> {
-    const requestUrl = getServerUrl('/accounts/transactions?'
-      + (fromDate ? 'fromDate=' + encodeURIComponent(fromDate.toString()) + '&' : '')
-      + (toDate ? 'toDate=' + encodeURIComponent(toDate.toString()) + '&' : '')
-      + (count ? 'count=' + count + '&' : '')
-      + (skip ? 'skip=' + skip : ''));
+  public getTransactions(jwtToken: string, query?: CountQuery | DateQuery): Observable<TransactionQuery> {
+    let requestUrl = getServerUrl('/accounts/transactions');
+
+    if ((<DateQuery>query)?.fromDate && (<DateQuery>query)?.toDate) {
+      const dateQuery = <DateQuery>query;
+      requestUrl += `?fromDate=${encodeURIComponent(dateQuery.fromDate.toString())}&toDate=${encodeURIComponent(dateQuery.toDate.toString())}`;
+    } else {
+      const countQuery = <CountQuery>query;
+      requestUrl += `?count=${countQuery?.count ? countQuery.count : 0}&skip=${countQuery?.skip ? countQuery.skip : 0}`;
+    }
 
     return this.http.get<TransactionQuery>(
       requestUrl,

@@ -18,12 +18,13 @@ db.ensureIndex({fieldName: 'accountNr', unique: true, sparse: true});
  *  Account Service Facilities & API
  */
 
-function createTransactionObj(from, target, amount, total, date) {
+function createTransactionObj(from, target, amount, total, date, category) {
     return {
         from,
         target,
         amount,
         total,
+        category,
         date: date ? date : new Date()
     };
 }
@@ -65,7 +66,7 @@ async function get(accountNr) {
     throw resultUtil.createNotFoundResult();
 }
 
-async function addTransaction(from, target, amount, date = null) {
+async function addTransaction(from, target, amount, date = null, category = undefined) {
     try {
         const fromAccount = await get(from);
         const targetAccount = await get(target);
@@ -79,10 +80,10 @@ async function addTransaction(from, target, amount, date = null) {
             let targetAccountAmount = targetAccount.amount + Number(amount);
 
             const transactionFrom = await toQuery(finish => {
-                dbTransaction.insert(createTransactionObj(from, target, -amount, fromAccountAmount, date), finish);
+                dbTransaction.insert(createTransactionObj(from, target, -amount, fromAccountAmount, date, category), finish);
             });
             const transactionTarget = await toQuery(finish => {
-                dbTransaction.insert(createTransactionObj(from, target, amount, targetAccountAmount, date), finish);
+                dbTransaction.insert(createTransactionObj(from, target, amount, targetAccountAmount, date, category), finish);
             });
 
             const affectedFromAccount = await toCountedQuery(finish => {
@@ -101,7 +102,7 @@ async function addTransaction(from, target, amount, date = null) {
 }
 
 async function getTransactions(accountId, count, skip, fromDate, toDate) {
-    if (!(count || (fromDate && toDate))) {
+    if (typeof(count) === 'undefined' && !(fromDate && toDate)) {
         return {query: {count, skip, fromDate, toDate}, result: []};
     }
 

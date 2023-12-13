@@ -1,0 +1,32 @@
+.chart-div{
+    padding: 10px;
+    height: 70vh;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.select-div{
+    margin: 20px;
+}
+
+  select {
+    padding: 12px;
+    height: 45px;
+    width: 150px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: green; 
+    color: black; 
+    font-size: large;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+
+  
+  select::-ms-expand {
+    display: none;
+  }
+  

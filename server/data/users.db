@@ -1,9 +1,6 @@
-{"login":"user3","firstname":"Kevin","lastname":"Schmidt","passwordHash":"3ffdc769948072ff8335ddd9e1c9a8827fd11cfa882ae8531c73ea64ff6214bd","accountNr":"1000003","_id":"LVOJSEGgAzdzuaPk"}
-{"login":"Enjoyer","firstname":"Alessio","lastname":"Ferrareater","passwordHash":"b106053fab132f22a53aa9bb9e8f5a934968244ceb0e32ab214a9ad0274ecf21","accountNr":"1000007","_id":"Tdpxct3kWfdOakBu"}
-{"login":"user2","firstname":"Lisa","lastname":"Meier","passwordHash":"3ffdc769948072ff8335ddd9e1c9a8827fd11cfa882ae8531c73ea64ff6214bd","accountNr":"1000002","_id":"W1X6r84vEqtaV9N9"}
-{"login":"user1","firstname":"Bob","lastname":"Müller","passwordHash":"3ffdc769948072ff8335ddd9e1c9a8827fd11cfa882ae8531c73ea64ff6214bd","accountNr":"1000001","_id":"Z9NscuzM9AZa882i"}
-{"login":"The","firstname":"eater","lastname":"sneaker","passwordHash":"42653abb66228887e2daed5d5c410c3f34c14c99e18121f560f7fe9c96634648","accountNr":"1000004","_id":"j8lunTaaJ7KVYpJG"}
-{"login":"AlessioSmacker88","firstname":"Alessio","lastname":"Ferretti","passwordHash":"069a6ef9c135bd9e179fa4d6bf6abaf82be3946715709ecfb4ad334acae0fb56","accountNr":"1000006","_id":"qC4VQEunt4EbtxIJ"}
-{"login":"Jeremias","firstname":"Sneaker","lastname":"Eater","passwordHash":"b106053fab132f22a53aa9bb9e8f5a934968244ceb0e32ab214a9ad0274ecf21","accountNr":"1000005","_id":"vIPsYfkWp3tV1TTS"}
+{"login":"user2","firstname":"Lisa","lastname":"Meier","passwordHash":"879e0a6c3793565633ce410c15da9c6d0ab417dd627274e1e28e577a3f247ef6","accountNr":"1000002","_id":"0wi5qrYvwceaeJk1"}
+{"login":"user1","firstname":"Bob","lastname":"Müller","passwordHash":"879e0a6c3793565633ce410c15da9c6d0ab417dd627274e1e28e577a3f247ef6","accountNr":"1000001","_id":"EMlaX0HFMSJfIcod"}
+{"login":"Alessio","firstname":"Maker","lastname":"Feretti","passwordHash":"f97f2b91b2ae22e84aa4360966634383f160f7fafe68a3db24aa5fcb20912ff9","accountNr":"1000004","_id":"SrWkeeWZVpjy1hlO"}
+{"login":"user3","firstname":"Kevin","lastname":"Schmidt","passwordHash":"879e0a6c3793565633ce410c15da9c6d0ab417dd627274e1e28e577a3f247ef6","accountNr":"1000003","_id":"VkKj4KM5XtMgHSrc"}
 {"$$indexCreated":{"fieldName":"login","unique":true,"sparse":true}}
 {"$$indexCreated":{"fieldName":"accountNr","unique":true,"sparse":true}}

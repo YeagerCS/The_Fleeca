@@ -50,7 +50,8 @@ async function addTransactions(req, res, next) {
                 getAccountNrByJwt(req),
                 String(req.body.target),
                 parseFloat(req.body.amount),
-                null));
+                null,
+                req.body.category));
     } catch (err) {
         next(err);
     }

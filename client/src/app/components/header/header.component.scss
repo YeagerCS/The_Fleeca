@@ -1,20 +1,21 @@
-header div{
+header div:last-child{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 }
 
-header div button{
+header div:last-child button{
     min-height: 50px;
 }
+
 
 header{
     background-color: black;
     margin: 0;
-    padding: 0;
+    padding: 5px;
 }
-header div{
+header div:last-child{
     margin: 0;
     padding: 0;
 }
@@ -25,4 +26,24 @@ header div{
 
 #logo img{
     width: 350px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+}
+  
+  .centered {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+    background-color: #268F3A !important;
+}
+  
+::ng-deep .mat-datepicker-content{
+    background-color: #3dda5a !important;
 }

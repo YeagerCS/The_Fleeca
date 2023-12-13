@@ -1,9 +1,10 @@
 import {createHmac} from 'crypto';
 import jwt from 'jsonwebtoken';
 
+const PWD_SERVER_SECRET = 'DO_NOT_LEAK_THIS_SECRET!';
 
 function hashPwd(pwd){
-  return createHmac('sha256', "secret!") //more information: https://nodejs.org/api/crypto.html
+  return createHmac('sha256', PWD_SERVER_SECRET) //more information: https://nodejs.org/api/crypto.html
     .update(pwd)
     .digest('hex');
 }

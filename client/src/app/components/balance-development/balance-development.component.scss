@@ -1,0 +1,15 @@
+section{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+::ng-deep .chart-legend .legend-title-text{
+    color: black !important;
+}
+
+div {
+    margin: 20px;
+}

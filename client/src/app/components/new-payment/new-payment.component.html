@@ -4,17 +4,17 @@
         <form class="payment-form" #paymentForm="ngForm" (submit)="transferAmount(paymentForm)">
             <div>
                 <label for="from">From:</label>
-                <input type="text" name="from" disabled [(ngModel)]="fromString" class="form-eater">
-            </div>
+                <input type="text" name="from" class="form-eater" [(ngModel)]="fromString" disabled>
+            </div>  
             <div>
                 <label for="to">To:</label>
-                <input type="text" name="to" [(ngModel)]="targetInput" class="form-eater" (keyup)="onKeyUp()" appNumericInput required inputmode="numeric">
+                <input type="text" name="to" class="form-eater" (keyup)="onKeyUp()" appNumericInput inputmode="numeric" [(ngModel)]="targetInput">
                 <small>{{ targetMessage }}</small>
             </div>
             <div>
                 <label for="amount">Amount [CHF]:</label>
-                <input type="text" name="amount" [(ngModel)]="amountString" class="form-eater" required inputmode="numeric" appNumericInput>
-                <small>Please specify the amount</small>
+                <input type="text" name="amount" class="form-eater" inputmode="numeric" appNumericInput [(ngModel)]="amountString" (keyup)="onKeyUpAmount()">
+                <small>{{ targetAmountMessage }}</small>
             </div>
             <div>
                 <button type="submit" class="the-button" id="pay-btn">Pay</button>
