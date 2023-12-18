@@ -7,6 +7,7 @@ import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { TransactionConfirmation } from 'src/app/services/transaction.service';
 import { MatInput } from '@angular/material/input';
 import { FormControl } from '@angular/forms';
+import { filter } from 'src/app/array-functions';
 
 @Component({
   selector: 'app-balance-development',
@@ -44,10 +45,10 @@ export class BalanceDevelopmentComponent {
 
     combineLatest([
       this.accountHandler.transactionQuery.pipe(
-        map(tq => tq.result.filter(transaction => transaction.from !== this.currentUser.accountNr)),
+        map(tq => filter(tq.result, transaction => transaction.from !== this.currentUser.accountNr)),
       ),
       this.accountHandler.transactionQuery.pipe(
-        map(tq => tq.result.filter(transaction => transaction.from === this.currentUser.accountNr)),
+        map(tq => filter(tq.result, transaction => transaction.from === this.currentUser.accountNr)),
       )
     ]).subscribe(([incomingData, outgoingData]) => {
     

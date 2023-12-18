@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { combineLatest, filter, forkJoin, map, take } from 'rxjs';
+import { combineLatest, forkJoin, map, take } from 'rxjs';
 import { format } from 'date-fns';
 import { AccountHandlerService } from 'src/app/services/account-handler.service';
 import { AccountBalance } from 'src/app/services/account.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { Transaction, TransactionConfirmation } from 'src/app/services/transaction.service';
+import { reduce, filter } from 'src/app/array-functions';
 
 
 @Component({
@@ -55,10 +56,10 @@ export class BudgetplanComponent implements OnInit{
     
     combineLatest([
       this.accountHandler.transactionQuery.pipe(
-        map(tq => tq.result.filter(transaction => transaction.from !== this.currentUser.accountNr))
+        map(tq => filter(tq.result, transaction => transaction.from !== this.currentUser.accountNr))
       ),
       this.accountHandler.transactionQuery.pipe(
-        map(tq => tq.result.filter(transaction => transaction.from === this.currentUser.accountNr))
+        map(tq => filter(tq.result, transaction => transaction.from === this.currentUser.accountNr))
       )
     ]).subscribe(([incomeData, expenseData]) => {
       this.incomeData = incomeData;
@@ -69,8 +70,8 @@ export class BudgetplanComponent implements OnInit{
   }
 
   updateData(){
-    const incomeData = this.incomeData.filter(transaction => new Date(transaction.date).getFullYear() == Number(this.selectedYear));
-    const expenseData = this.expenseData.filter(transaction => new Date(transaction.date).getFullYear() == Number(this.selectedYear));
+    const incomeData = filter(this.incomeData, transaction => new Date(transaction.date).getFullYear() == Number(this.selectedYear));
+    const expenseData = filter(this.expenseData, transaction => new Date(transaction.date).getFullYear() == Number(this.selectedYear));
 
     this.processData(incomeData, expenseData)
   }
@@ -107,7 +108,7 @@ export class BudgetplanComponent implements OnInit{
       (t) => t.date.split("-")[1] === month
     );
 
-    return fitlered.reduce((total, t) => total + t.amount, 0);
+    return reduce(fitlered, (total, t) => total + t.amount, 0);
   }
 
   years: number[] = [];

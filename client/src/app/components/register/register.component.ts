@@ -5,6 +5,7 @@ import { Account } from 'src/app/services/account.service';
 import { AuthService, Credential } from 'src/app/services/auth.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { NavigationService } from 'src/app/services/navigation.service';
+import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
   selector: 'app-register',

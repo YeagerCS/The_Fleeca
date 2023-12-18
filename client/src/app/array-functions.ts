@@ -7,3 +7,9 @@ export const filter = ([first, ...rest]: any[], fn: (x: any) => boolean): any[] 
 
     return [...filter(rest, fn)];
 }
+
+export const reduce = ([first, ...rest]: any[], fn: (acc: any, x: any) => any, initialValue: any): any => {
+    if(!first) return initialValue;
+
+    return reduce(rest, fn, fn(initialValue, first))
+}
