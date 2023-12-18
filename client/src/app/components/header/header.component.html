@@ -2,7 +2,7 @@
     <div class="header-container">
         <div id="logo"><img src="../../../assets/fleeca_logo.png" alt="fleeca" (click)="navDashboard()"></div>
         <div>
-            <button (click)="navEcockpit()" *ngIf="headerText.startsWith('Logout')" class="the-button">e-Cockpit</button>
+            <button (click)="navEcockpit()" *ngIf="headerText.startsWith('Logout')" class="the-button">Statistics</button>
         </div>
         <div class="centered" *ngIf="dateFilter">
             <mat-form-field>

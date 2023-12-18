@@ -1776,3 +1776,5 @@
 {"from":"1000001","target":"1000003","amount":-71,"total":134,"category":"beauty_health","date":{"$$date":1702118523450},"_id":"znqe3AAdReQSt8g6"}
 {"from":"1000002","target":"1000003","amount":122,"total":932,"category":"furniture","date":{"$$date":1693467723450},"_id":"zxt4nvPpqst019X9"}
 {"from":"1000001","target":"1000002","amount":44,"total":1109,"category":"beauty_health","date":{"$$date":1685972523450},"_id":"zyLh5hdHVleCgSy6"}
+{"from":"1000001","target":"1000003","amount":-80,"total":5703,"date":{"$$date":1702765592068},"_id":"JGKfb79ZLY2DEMsQ"}
+{"from":"1000001","target":"1000003","amount":80,"total":1954,"date":{"$$date":1702765592069},"_id":"tpEm0AV9382MELHF"}

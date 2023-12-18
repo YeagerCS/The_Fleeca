@@ -63,7 +63,7 @@ export class BalanceDevelopmentComponent {
           name: 'Outgoing',
           series: outgoingData.map(transaction => ({
             name: format(transaction.date),
-            value: transaction.amount * (-1),
+            value: Math.abs(transaction.amount),
           })),
         },
       ];

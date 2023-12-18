@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { filter } from 'src/app/array-functions';
 import { AccountHandlerService } from 'src/app/services/account-handler.service';
 import { Account, AccountBalance, AccountService } from 'src/app/services/account.service';
 import { AuthService, Credential } from 'src/app/services/auth.service';
@@ -29,10 +30,11 @@ export class DashboardComponent implements OnInit{
         this.theUser = accountBalance;
       })
     }
+
+    const testarray = [1, 4, 2, 5, 7, 2, 9]
+    
   }
 
-  //header
-  
   getHeaderText(){
     try{
       return "Logout " + this.theUser.owner.firstname + " " + this.theUser.owner.lastname

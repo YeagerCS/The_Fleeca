@@ -14,7 +14,7 @@ import { format } from 'src/app/date-formatter';
   templateUrl: './latest-transactions.component.html',
   styleUrls: ['./latest-transactions.component.scss']
 })
-export class LatestTransactionsComponent implements OnInit, AfterViewInit{
+export class LatestTransactionsComponent implements OnInit{
   constructor(private accountHandler: AccountHandlerService, private lsService: LocalstorageService,
     private dataSourceSerivce: DataSourceSharingService){
   }
@@ -50,7 +50,7 @@ export class LatestTransactionsComponent implements OnInit, AfterViewInit{
   }
 
   applySort(event: Sort): void {
-    const data = this.dataSource.data.slice(); //copy array
+    const data = this.dataSource.data.slice(); //'slice' copies the array
 
     if (event.active && event.direction) {
       this.dataSource.data = this.sortData(data, event.active, event.direction);
@@ -85,9 +85,6 @@ export class LatestTransactionsComponent implements OnInit, AfterViewInit{
       default:
         return (item as any)[column];
     }
-  }
-
-  ngAfterViewInit() {    
   }
 
 }

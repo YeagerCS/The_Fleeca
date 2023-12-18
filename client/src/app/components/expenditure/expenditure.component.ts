@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getFormattedCategory } from 'src/app/category-formatter';
 import { AccountHandlerService } from 'src/app/services/account-handler.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { Transaction, TransactionConfirmation } from 'src/app/services/transaction.service';
@@ -31,12 +32,12 @@ export class ExpenditureComponent implements OnInit{
     this.accountHandler.transactionQuery.subscribe({
       next: tq => {
         this.transactionData = tq.result;
-        this.processData(tq.result);
+        this.processData();
       }
     })
   }
 
-  processData(data: TransactionConfirmation[]): void{
+  processData(): void{
     this.pieChartData = [];
 
     const categoryCount: { [key: string]: number } = {};
@@ -49,7 +50,7 @@ export class ExpenditureComponent implements OnInit{
     
     Object.keys(categoryCount).forEach(category => {
       this.pieChartData.push({
-        name: category,
+        name: getFormattedCategory(category),
         value: categoryCount[category]
       });
     });

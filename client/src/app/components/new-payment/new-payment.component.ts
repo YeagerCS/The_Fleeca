@@ -12,7 +12,7 @@ const DEFAULT_MSG = "Please specify the target account number.";
 const DEFAULT_AMOUNT_MSG = "Please specify the amount."
 @Component({
   selector: 'app-new-payment',
-  templateUrl: './new-payment.component.html',
+  templateUrl: './new-payment.component.html',  
   styleUrls: ['./new-payment.component.scss']
 })
 export class NewPaymentComponent implements OnInit{
@@ -115,11 +115,11 @@ export class NewPaymentComponent implements OnInit{
             this.transactionCompleted = true;
             this.currentBalance = confirmation.total;
             this.error = "";
+            
   
             this.accountHandler.updateTransactions(this.jwt);
             this.accountHandler.transactionQuery.subscribe(tq => {
               this.dataSourceService.updateDataSource(tq.result);
-              console.log(tq);
             });
           },
           error: e => {
