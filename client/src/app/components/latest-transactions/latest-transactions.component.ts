@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator'
 import { DataSourceSharingService } from 'src/app/services/data-source-sharing.service';
 import { currency } from 'src/app/currency-formatter';
 import { format } from 'src/app/date-formatter';
+import { getFormattedCategory } from 'src/app/category-formatter';
 
 @Component({
   selector: 'app-latest-transactions',
@@ -22,10 +23,11 @@ export class LatestTransactionsComponent implements OnInit{
   @Input() cockpit: boolean = false;
   transactionQuery!: TransactionQuery
   jwt!: string
-  displayedColumns: string[] = ['Source', 'Target', 'Amount', 'Balance', 'Date']
+  displayedColumns: string[] = ['Source', 'Target', 'Amount', 'Balance', 'Date', 'Category']
   dataSource!: MatTableDataSource<TransactionConfirmation>;
   currency: (value: number) => string = currency;
   format: (value: string) => string = format;
+  getFormattedCategory: (value: string) => string = getFormattedCategory;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('tbSort') tbSort = new MatSort() 
@@ -82,6 +84,8 @@ export class LatestTransactionsComponent implements OnInit{
         return item.total;
       case 'Date':
         return item.date;
+      case 'Category':
+        return item.category;
       default:
         return (item as any)[column];
     }

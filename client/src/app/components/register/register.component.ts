@@ -67,7 +67,7 @@ export class RegisterComponent implements OnInit{
         }
       })
     } else{
-      this.error = "Form data is not valid.l"
+      this.error = "Form data is not valid."
     }
   }
 

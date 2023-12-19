@@ -1,15 +1,32 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MAT_DATE_FORMATS, MatDateFormats } from '@angular/material/core';
 import { Router } from '@angular/router';
-import { JsonWebTokenError } from 'jsonwebtoken';
 import { AccountHandlerService } from 'src/app/services/account-handler.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { NavigationService } from 'src/app/services/navigation.service';
 
+
+const MY_DATE_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: "DD/MM/YYYY",
+  },
+  display: {
+    dateInput: "DD/MM/YYYY",
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'DD/MM/YYYY',
+    monthYearA11yLabel: 'MMMM YYYY'
+  }
+};
+
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+  ]
 })
 export class HeaderComponent implements OnInit{
   constructor(private router: Router, private lsService: LocalstorageService,

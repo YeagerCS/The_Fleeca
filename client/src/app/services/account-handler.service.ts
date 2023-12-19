@@ -3,6 +3,10 @@ import { Account, AccountBalance, AccountService } from './account.service';
 import { Observable, Subject } from 'rxjs';
 import { TransactionQuery, TransactionService } from './transaction.service';
 
+
+export type ReadonlyAccountBalance = Readonly<AccountBalance>
+export type ReadonlyTransactionQuery = Readonly<TransactionQuery>
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,10 +14,10 @@ export class AccountHandlerService {
 
   constructor(public accountService: AccountService, public transactionService: TransactionService) { }
 
-  private accountBalance!: AccountBalance
-  private accountBalanceSubject = new Subject<AccountBalance>();
-  private transactions!: TransactionQuery
-  private transactionsSubject = new Subject<TransactionQuery>();
+  private accountBalance!: ReadonlyAccountBalance
+  private accountBalanceSubject = new Subject<ReadonlyAccountBalance>();
+  private transactions!: ReadonlyTransactionQuery
+  private transactionsSubject = new Subject<ReadonlyTransactionQuery>();
 
   get userBalance(): Observable<AccountBalance> {
     return this.accountBalanceSubject.asObservable();

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forEach } from 'src/app/array-functions';
 import { getFormattedCategory } from 'src/app/category-formatter';
 import { AccountHandlerService } from 'src/app/services/account-handler.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
@@ -42,13 +43,13 @@ export class ExpenditureComponent implements OnInit{
 
     const categoryCount: { [key: string]: number } = {};
 
-    this.transactionData.forEach(transaction => {
+    forEach(this.transactionData, transaction => {
       const category = transaction.category || 'Uncategorized';
       categoryCount[category] = (categoryCount[category] || 0) + 1;
     });
 
     
-    Object.keys(categoryCount).forEach(category => {
+    forEach(Object.keys(categoryCount), category => {
       this.pieChartData.push({
         name: getFormattedCategory(category),
         value: categoryCount[category]

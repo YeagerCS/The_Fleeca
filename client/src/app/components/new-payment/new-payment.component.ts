@@ -92,8 +92,8 @@ export class NewPaymentComponent implements OnInit{
     this.amountInput = Number(this.amountString)
     this.targetAmountMessage = DEFAULT_AMOUNT_MSG;
 
-    if(this.amountInput >= this.userBalance.amount){
-      this.targetAmountMessage = "The inputted exceeds your balance.";
+    if(this.amountInput > this.userBalance.amount){
+      this.targetAmountMessage = "The inputted amount exceeds your balance.";
     }
 
     if(this.amountInput < 0.05){
@@ -108,7 +108,7 @@ export class NewPaymentComponent implements OnInit{
   transferAmount(ngForm: NgForm){
     this.amountInput = Number(this.amountString)
 
-    if(this.targetInput !== this.userBalance.accountNr && ngForm.valid && this.amountInput){
+    if(this.targetInput !== this.userBalance.accountNr && ngForm.valid && this.amountInput && this.amountInput >= 0.05){
       if(this.amountInput <= this.userBalance.amount){
         this.transactionService.transfer(this.jwt, {target: this.targetInput, amount: this.amountInput}).subscribe({
           next: confirmation => { 
@@ -127,12 +127,10 @@ export class NewPaymentComponent implements OnInit{
           }
         })
       } else{
-        this.error = "The inputted amount exceed your balance."
+        this.error = "The inputted amount exceeds your balance."
       }
     } else{
-      this.error = "Please fill out the fields.";
+      this.error = "Please fill out the fields with valid data.";
     }
-    this.targetMessage = DEFAULT_MSG;
-    this.targetAmountMessage = DEFAULT_AMOUNT_MSG;
   }
 }

@@ -82,7 +82,7 @@ export class BudgetplanComponent implements OnInit{
     const monthStrings: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     const groupedData = [];
-
+    // Groups data by the month
     let index = 0
     for(const month of months){
       
@@ -103,6 +103,9 @@ export class BudgetplanComponent implements OnInit{
     this.chartData = [...groupedData] || [];
   }
 
+  /* checks for the month in all transactions and filters out the transactions for 
+  // each specific month. It does that by reducing the filtered array to the total 
+  // amount of every filtered transaction*/
   calculateTotal(transactions: TransactionConfirmation[], month: string){
     const fitlered = transactions.filter(
       (t) => t.date.split("-")[1] === month

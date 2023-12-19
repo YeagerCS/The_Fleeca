@@ -13,3 +13,10 @@ export const reduce = ([first, ...rest]: any[], fn: (acc: any, x: any) => any, i
 
     return reduce(rest, fn, fn(initialValue, first))
 }
+
+export const forEach = ([first, ...rest]: any[], fn: (x: any) => void): void => {
+    if(!first) return;
+
+    fn(first)
+    forEach(rest, fn);
+}

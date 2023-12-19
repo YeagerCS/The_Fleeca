@@ -1,7 +1,10 @@
 {"login":"user2","firstname":"Lisa","lastname":"Meier","passwordHash":"879e0a6c3793565633ce410c15da9c6d0ab417dd627274e1e28e577a3f247ef6","accountNr":"1000002","_id":"0wi5qrYvwceaeJk1"}
 {"login":"user1","firstname":"Bob","lastname":"Müller","passwordHash":"879e0a6c3793565633ce410c15da9c6d0ab417dd627274e1e28e577a3f247ef6","accountNr":"1000001","_id":"EMlaX0HFMSJfIcod"}
+{"login":"AnesGanic","firstname":"Anes","lastname":"Ganic","passwordHash":"a3510fead154f5f8364c58a478d56be10336f779f1c503b122ef043b359f1961","accountNr":"1000008","_id":"QUcPbySpFAdWUfr7"}
 {"login":"Alessio","firstname":"Maker","lastname":"Feretti","passwordHash":"f97f2b91b2ae22e84aa4360966634383f160f7fafe68a3db24aa5fcb20912ff9","accountNr":"1000004","_id":"SrWkeeWZVpjy1hlO"}
+{"login":"Eater","firstname":"Alessio","lastname":"Ferrareater","passwordHash":"f6ff33ed3081cea8893b50e0747997ec7f875881bc0c60bee59761a58fbf8fe8","accountNr":"1000005","_id":"U0LIFlWauc8wQyl6"}
 {"login":"user3","firstname":"Kevin","lastname":"Schmidt","passwordHash":"879e0a6c3793565633ce410c15da9c6d0ab417dd627274e1e28e577a3f247ef6","accountNr":"1000003","_id":"VkKj4KM5XtMgHSrc"}
+{"login":"The Man","firstname":"The","lastname":"Man","passwordHash":"2ca43692d8e9165d178888477336792de39567d06fde85199ae520d35b74a019","accountNr":"1000007","_id":"nMJEp40pOksZQWTh"}
+{"login":"The","firstname":"Andrin","lastname":"Egli","passwordHash":"86916f8effce4b42287576c9f0c6e258abe235b97aa1942331ea5cf9311a56a3","accountNr":"1000006","_id":"oyKMRrNK9UYAInib"}
 {"$$indexCreated":{"fieldName":"login","unique":true,"sparse":true}}
 {"$$indexCreated":{"fieldName":"accountNr","unique":true,"sparse":true}}
-{"login":"Eater","firstname":"Alessio","lastname":"Ferrareater","passwordHash":"f6ff33ed3081cea8893b50e0747997ec7f875881bc0c60bee59761a58fbf8fe8","accountNr":"1000005","_id":"U0LIFlWauc8wQyl6"}
