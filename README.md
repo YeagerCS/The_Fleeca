@@ -3,14 +3,14 @@
 ## Usage
 Go into the client and run it
 ```
-npm i
 cd client
+npm i
 npm run start
 ```
 Then go into the server and run it
 ```
-npm i
 cd server
+npm i
 npm run start
 ```
 
